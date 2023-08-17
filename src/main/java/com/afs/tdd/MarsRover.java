@@ -38,7 +38,6 @@ public class MarsRover {
             else if(location.getDirection() == Direction.WEST){
                 location.setDirection(Direction.SOUTH);
             }
-
         }
         else if(givenCommand == Command.TURN_RIGHT){
             if(location.getDirection() == Direction.NORTH){
@@ -61,6 +60,8 @@ public class MarsRover {
     }
 
     public void executeBatchCommands(List<Command> batchCommands) {
-
+        batchCommands.forEach(command -> {
+           executeCommand(command);
+        });
     }
 }
