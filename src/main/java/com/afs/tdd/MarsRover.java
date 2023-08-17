@@ -29,6 +29,9 @@ public class MarsRover {
             if(location.getDirection() == Direction.NORTH){
                 location.setDirection(Direction.EAST);
             }
+            else if(location.getDirection() == Direction.SOUTH){
+                location.setDirection(Direction.WEST);
+            }
         }
     }
 
