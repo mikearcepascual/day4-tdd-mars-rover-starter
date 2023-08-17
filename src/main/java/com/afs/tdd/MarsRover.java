@@ -10,48 +10,53 @@ public class MarsRover {
         this.location = location;
     }
 
+    public void executeMoveCommand(){
+        switch(location.getDirection()){
+            case NORTH:
+                location.setY(location.getY() + 1);break;
+            case SOUTH:
+                location.setY(location.getY() - 1);break;
+            case EAST:
+                location.setX(location.getX() + 1);break;
+            case WEST:
+                location.setX(location.getX() - 1);break;
+        }
+    }
+
+    public void executeTurnLeftCommand(){
+        switch(location.getDirection()){
+            case NORTH:
+                location.setDirection(Direction.WEST);break;
+            case SOUTH:
+                location.setDirection(Direction.EAST);break;
+            case EAST:
+                location.setDirection(Direction.NORTH);break;
+            case WEST:
+                location.setDirection(Direction.SOUTH);break;
+        }
+    }
+
+    public void executeTurnRightCommand(){
+        switch(location.getDirection()){
+            case NORTH:
+                location.setDirection(Direction.EAST);break;
+            case SOUTH:
+                location.setDirection(Direction.WEST);break;
+            case EAST:
+                location.setDirection(Direction.SOUTH);break;
+            case WEST:
+                location.setDirection(Direction.NORTH);break;
+        }
+    }
     public void executeCommand(Command givenCommand) {
         if(givenCommand == Command.MOVE) {
-            if(location.getDirection() == Direction.NORTH){
-                location.setY(location.getY() + 1);
-            }
-            else if(location.getDirection() == Direction.SOUTH){
-                location.setY(location.getY() - 1);
-            }
-            else if(location.getDirection() == Direction.EAST){
-                location.setX(location.getX() + 1);
-            }
-            else if(location.getDirection() == Direction.WEST){
-                location.setX(location.getX() - 1);
-            }
+            executeMoveCommand();
         }
         else if(givenCommand == Command.TURN_LEFT){
-            if(location.getDirection() == Direction.NORTH){
-                location.setDirection(Direction.WEST);
-            }
-            else if(location.getDirection() == Direction.SOUTH){
-                location.setDirection(Direction.EAST);
-            }
-            else if(location.getDirection() == Direction.EAST){
-                location.setDirection(Direction.NORTH);
-            }
-            else if(location.getDirection() == Direction.WEST){
-                location.setDirection(Direction.SOUTH);
-            }
+            executeTurnLeftCommand();
         }
         else if(givenCommand == Command.TURN_RIGHT){
-            if(location.getDirection() == Direction.NORTH){
-                location.setDirection(Direction.EAST);
-            }
-            else if(location.getDirection() == Direction.SOUTH){
-                location.setDirection(Direction.WEST);
-            }
-            else if(location.getDirection() == Direction.EAST){
-                location.setDirection(Direction.SOUTH);
-            }
-            else if(location.getDirection() == Direction.WEST){
-                location.setDirection(Direction.NORTH);
-            }
+            executeTurnRightCommand();
         }
     }
 
