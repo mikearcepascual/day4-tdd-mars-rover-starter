@@ -49,4 +49,41 @@ class MarsRoverTest {
         Assertions.assertEquals(Direction.EAST,currentLocation.getDirection());
     }
 
+    @Test
+    void should_change_to_location_0_negative_1_South_when_executeCommand_given_0_0_South_and_command_Move() {
+        //Given
+        Location initialLocation = new Location(0, 0, Direction.SOUTH);
+        Command givenCommand = Command.MOVE;
+        MarsRover marsRover = new MarsRover(initialLocation);
+        //When
+        marsRover.executeCommand(givenCommand);
+        Location currentLocation = marsRover.getCurrentLocation();
+        //Then
+        Assertions.assertEquals(0,currentLocation.getX());
+        Assertions.assertEquals(-1,currentLocation.getY());
+        Assertions.assertEquals(Direction.SOUTH,currentLocation.getDirection());
+    }
+    @Test
+    void should_change_to_location_0_0_East_when_executeCommand_given_0_0_South_and_command_Turn_Left(){}
+
+    @Test
+    void should_change_to_location_0_0_West_when_executeCommand_given_0_0_South_and_command_Turn_Right(){}
+
+    @Test
+    void should_change_to_location_1_0_East_when_executeCommand_given_0_0_East_and_command_Move() {}
+
+    @Test
+    void should_change_to_location_0_0_North_when_executeCommand_given_0_0_East_and_command_Turn_Left(){}
+
+    @Test
+    void should_change_to_location_0_0_South_when_executeCommand_given_0_0_East_and_command_Turn_Right(){}
+
+    @Test
+    void should_change_to_location_negative_1_0_West_when_executeCommand_given_0_0_West_and_command_Move() {}
+
+    @Test
+    void should_change_to_location_0_0_South_when_executeCommand_given_0_0_West_and_command_Turn_Left(){}
+
+    @Test
+    void should_change_to_location_0_0_North_when_executeCommand_given_0_0_West_and_command_Turn_Right(){}
 }
